@@ -1,0 +1,357 @@
+\documentclass[a4]{article}
+\pagestyle{myheadings}
+
+%%%%%%%%%%%%%%%%%%%
+% Packages/Macros %
+%%%%%%%%%%%%%%%%%%%
+\usepackage{mathrsfs}
+
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{}
+\chead{}
+\rhead{}
+\lfoot{}
+\cfoot{} 
+\rfoot{\normalsize\thepage}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\newcommand{\RomanNumeralCaps}[1]
+{\MakeUppercase{\romannumeral #1}}
+
+\usepackage{amssymb,latexsym}  % Standard packages
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{MnSymbol}
+\usepackage{amsmath,amsthm}
+\usepackage{indentfirst}
+\usepackage{graphicx}%,vmargin}
+\usepackage{graphicx}
+\graphicspath{{pictures/}} 
+\usepackage{verbatim}
+\usepackage{color}
+
+
+
+
+
+
+
+
+
+\DeclareGraphicsExtensions{.pdf,.png,.jpg}% -- настройка картинок
+
+\usepackage{epigraph} %%% to make inspirational quotes.
+\usepackage[all]{xy} %for XyPic'a
+\usepackage{color} 
+\usepackage{amscd} %для коммутативных диграмм
+
+
+\newtheorem{Lemma}{Лемма}[section]
+\newtheorem{Proposition}{Предложение}[section]
+\newtheorem{Theorem}{Теорема}[section]
+\newtheorem{Corollary}{Следствие}[section]
+\newtheorem{Remark}{Замечание}[section]
+\newtheorem{Definition}{Определение}[section]
+\newtheorem{Designations}{Обозначение}[section]
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%% 
+%Сношение с оглавлением% 
+%%%%%%%%%%%%%%%%%%%%%%%% 
+\usepackage{tocloft} 
+\renewcommand{\cftdotsep}{2} %частота точек
+\renewcommand\cftsecleader{\cftdotfill{\cftdotsep}}
+\renewcommand{\cfttoctitlefont}{\hspace{0.38\textwidth} \LARGE\bfseries} 
+\renewcommand{\cftsecaftersnum}{.}
+\renewcommand{\cftsubsecaftersnum}{.}
+\renewcommand{\cftbeforetoctitleskip}{-1em} 
+\renewcommand{\cftaftertoctitle}{\mbox{}\hfill \\ \mbox{}\hfill{\footnotesize Стр.}\vspace{-0.5em}} 
+\renewcommand{\cftsubsecfont}{\hspace{1pt}} 
+\renewcommand{\cftparskip}{3mm} %определяет величину отступа в оглавлении
+\setcounter{tocdepth}{5} 
+
+
+
+
+\addtolength{\textwidth}{0.7in}
+\textheight=630pt
+\addtolength{\evensidemargin}{-0.4in}
+\addtolength{\oddsidemargin}{-0.4in}
+\addtolength{\topmargin}{-0.4in}
+
+\newcommand{\empline}{\mbox{}\newline} 
+\newcommand{\likechapterheading}[1]{ 
+	\begin{center} 
+		\textbf{\MakeUppercase{#1}} 
+	\end{center} 
+	\empline} 
+
+\makeatletter 
+\renewcommand{\@dotsep}{2} 
+\newcommand{\l@likechapter}[2]{{\bfseries\@dottedtocline{0}{0pt}{0pt}{#1}{#2}}} 
+\makeatother 
+\newcommand{\likechapter}[1]{ 
+	\likechapterheading{#1} 
+	\addcontentsline{toc}{likechapter}{\MakeUppercase{#1}}} 
+
+
+
+
+
+\usepackage{xcolor}
+\usepackage{hyperref}
+\definecolor{linkcolor}{HTML}{000000} % цвет ссылок
+\definecolor{urlcolor}{HTML}{AA1622} % цвет гиперссылок
+
+\hypersetup{pdfstartview=FitH,  linkcolor=linkcolor,urlcolor=urlcolor, colorlinks=true}
+
+
+
+\def \newstr {\medskip \par \noindent} 
+
+
+
+\begin{document}
+	\def\contentsname{\LARGE{Содержание}}
+	\thispagestyle{empty}
+	\begin{center} 
+		\vspace{2cm} 
+		{\Large \sc Санкт-Петербургский Политехнический Университет}\\
+		\vspace{2mm}
+		{\Large\sc им. Петра Великого}\\
+		\vspace{1cm}
+		{\large \sc Институт прикладной математики и механики\\ 
+			\vspace{0.5mm}
+			\textsc{}}\\ 
+		\vspace{0.5mm}
+		{\large\sc Кафедра $"$Прикладная математика$"$}\\
+		\vspace{15mm}
+		
+		
+		{\sc \textbf{Отчёт\\
+			Лабораторная работа № 2\\
+			по дисциплине\\
+			"Математическая статистика"}
+			\vspace{6mm}
+			
+		}
+		\vspace*{2mm}
+		
+		
+		\begin{flushleft}
+			\vspace{4cm}
+			\sc Выполнил студент:\\
+			\sc Мальцов Дмитрий Дмитриевич\\
+			\sc группа: 3630102/70401\\
+			\vspace{1cm}
+			\sc Проверил:\\
+			\sc к.ф-м.н., доцент\\
+			\sc Баженов Александр Николаевич
+			\vspace{20mm}
+		\end{flushleft}
+	\end{center} 
+	\begin{center}
+		\vfill {\large\textsc{Санкт-Петербург}}\\ 
+		2020 год
+	\end{center}
+	
+	\newpage
+	\pagestyle{plain}
+	
+	%\begin{center}
+	%\begin{abstract} 
+	
+	%\end{abstract}
+	
+	%\end{center}
+	
+	\newpage
+	\tableofcontents{}
+	\newpage
+	\listoftables
+	\newpage
+	
+	
+	\section{Постановка задачи}
+	
+	Для 5-ти рапределений:\\
+		Нормальное распределение $N(x,0,1)$\\
+		Распределение Коши $C(x,0,1)$\\
+		Распределение Лапласа $L( x,0,\frac{1}{\sqrt{2}})$\\
+		Распределение Пуассона $P(k, 10)$\\
+		Равномерное Распределение $U(x,-\sqrt{3}, \sqrt{3})$\\
+		
+		Сгенерировать выборки размером 10, 50 и 1000 элементов.
+		Для каждой выборки вычислить $\overline{x},\; med\; x,\; Z_R,\; Z_Q,\; Z_{tr},$ при $r = \frac{n}{4}.$.
+		
+	
+	\section{Теория}
+		\begin{enumerate}
+			\item Выборочное среднее \cite{average}:
+			\begin{equation}\label{eqn:average}
+			\overline{x} = \frac{1}{n}\sum_{i=1}^n x_i \hfill  
+			\end{equation}
+			\item Выборочная медиана \cite{med}:
+			\begin{equation}
+			med\; x = \begin{cases}
+			x_{k+1}, & n = 2k+1\\
+			\frac{1}{2}\left(x_k+x_{k+1}\right), & n = 2k
+			\end{cases} \hfill  \label{eqn:med}
+			\end{equation}
+			\item Полусумма экстремальных значений \cite{mean_extr}:
+			\begin{equation}
+			Z_R = \frac{1}{2}\left(x_1+x_n\right) \hfill  \label{eqn:mean_extr}
+			\end{equation}
+			\item Полусумма квартилей \cite{quartiles}:
+			\begin{equation}
+			Z_Q = \frac{1}{2}\left(Z_{\frac{1}{4}}+Z_{\frac{3}{4}}\right) \hfill  \label{eqn:quartiles}
+			\end{equation}
+			\item Усечённое среднее \cite{cut_mean}:
+			\begin{equation}
+			Z_{tr} = \frac{1}{n - 2r}\sum_{i=r+1}^{n-r} x_i \hfill  \label{eqn:cut_mean}
+			\end{equation}
+		\end{enumerate}	
+		
+	\section{Реализация}
+	Для генерации выборки был использован $Python\;3.7$: модуль $random$ библиотеки $numpy$ для генерации случайных чисел с различными распределениями.\\
+	После вычисления характеристик положения $1000$ раз находится среднее значение и дисперсия: 
+	\begin{equation}
+	E(z) = \frac{1}{n}\sum_{i=1}^n z_i
+	\end{equation} 
+	\begin{equation}
+	D(z) = E\left(z^2\right) - E^2(z)
+	\end{equation}
+	
+	\section{Результаты}
+		\begin{table}[h]
+			\caption{ Стандартное нормальное распределение.}
+			\begin{center}
+				\begin{tabular}{|c|c|c|c|c|c|}
+					\hline
+					$n = 10$ & average & med & $Z_R$ & $Z_Q$ & $Z_{tr},\;r=\frac{n}{4}$\\
+					\hline
+					$E =$ & $0.01$ & $-0.01$ &        $-0.01$ &       $0.0$ &         $-0.01$\\
+					\hline
+					$D =$ & $0.099$&         $0.136$        & $0.180$     &    $0.117$      &   $0.113$\\
+					\hline
+					$n = 50$ & average & med & $Z_R$ & $Z_Q$ & $Z_{tr},\;r=\frac{n}{4}$\\
+					\hline
+					$E =$ & $0.00$ & $-0.01$ & $0,00$ & $-0.01$ & $0.01$\\
+					\hline
+					$D =$ & $0.0197$&         0.03147        & 0.1196      &   0.0243       &  0.0230\\
+					\hline
+					$n = 1000$ & $Z_R$  & $Z_{tr},\;r=\frac{n}{4}$  &  $Z_Q$ & average & med\\
+					\hline
+					$E =$ & 0.007&        0.000&                 -0.001 & -0.002       & -0.002\\
+					\hline
+					$D =$ & 0.06869  &  0.00115    &    0.00131  &0.00100        & 0.00154      \\
+					\hline
+				\end{tabular}
+			\end{center}
+		\end{table}
+		\newpage
+		\begin{table}[h]
+			\caption{ Стандартное распределение Коши.}
+			\begin{center}
+				\begin{tabular}{|c|c|c|c|c|c|}
+					\hline
+					$n = 10$   & average & med & $Z_R$ & $Z_Q$ & $Z_{tr},\;r=\frac{n}{4}$\\ \hline
+					$E =$      & -0.68 &       0.02    &     -2.11  &      -0.00        &-0.02\\ \hline
+					$D =$       &	412.916  &     0.341 &        8385.756    &  0.803       &  0.477\\    \hline
+					
+					$n = 50$   & average & med & $Z_R$ & $Z_Q$ & $Z_{tr},\;r=\frac{n}{4}$\\ \hline
+					$E =$   &-22.042      & -0.005       & 8.862       &  -0.010      &  0.003\\   \hline
+					$D =$      & 474719.9636   & 0.0522        & 1746206.4756  & 0.1028        & 0.0612  \\   \hline 
+					
+					$n = 1000$ & $Z_R$ & average & med  & $Z_Q$ & $Z_{tr},\;r=\frac{n}{4}$\\ \hline
+					$E =$   &    1150.2818   & 0.2832 &        0.0003      &     -0.0015    &    -0.0029\\  \hline
+					$D =$   & 2196736948.38102 &  272.36030      & 0.00257         & 0.00495 &        0.00257\\    
+					\hline
+				\end{tabular}
+			\end{center}
+		\end{table}
+		\newpage
+		\begin{table}[h]
+			\caption{ Распределение Лапласа.}
+			\begin{center}
+				\begin{tabular}{|c|c|c|c|c|c|}
+					\hline
+					$n = 10$    & average & med & $Z_R$ & $Z_Q$ & $Z_{tr},\;r=\frac{n}{4}$\\ \hline 
+					$E = $    &  	-0.00    &    -0.01 &       0.03      &   -0.02      &  -0.00   \\ \hline
+					$D = $     & 0.100      &   0.069        & 0.425      &   0.094       &  0.071    \\ \hline
+					
+					$n = 50$  & average & med & $Z_R$ & $Z_Q$ & $Z_{tr},\;r=\frac{n}{4}$\\ \hline
+					$E = $     & -0.004       & -0.000       & 0.022 &         0.005 &         0.004   \\ \hline
+					$D =$      & 	0.0190    &     0.0135  &       0.4011      &   0.0201      &   0.0125  \\ \hline
+					
+					$n = 1000$  & $Z_Q$ & average & med  & $Z_{tr},\;r=\frac{n}{4}$  & $Z_R$\\ \hline
+					$E =$   &   0.0012   & 	0.0000    &     0.0000            &    0.0000  &       -0.0361   \\ \hline
+					$D = $   &   0.00095  & 0.00102        & 0.00052                  &  0.00060  &  0.40623 \\ 
+					\hline
+				\end{tabular}
+			\end{center}
+		\end{table}
+		
+		\begin{table}[h]
+			\caption{ Равномерное распределение.}
+			\begin{center}
+				\begin{tabular}{|c|c|c|c|c|c|}
+					\hline
+					$n = 10$  & average & med & $Z_R$ & $Z_Q$ & $Z_{tr},\;r=\frac{n}{4}$\\ \hline
+					$E =$       &	0.01  &       -0.00 &       -0.00       & -0.02      &  0.00\\ \hline  
+					$D =$       &	0.098     &    0.220 &        0.041      &   0.139       &  0.158  \\ \hline
+					
+					$n = 50$  & average & med & $Z_R$ & $Z_Q$ & $Z_{tr},\;r=\frac{n}{4}$\\ \hline
+					$E =$       & 0.001 &        0.005      &   0.000     &    -0.004 &       -0.009    \\ \hline
+					$D =$       &	0.0211      &   0.0560  &       0.0023      &   0.0299       &  0.0342\\ \hline
+					
+					$n = 1000$ & $Z_Q$ & average  & $Z_R$  & $Z_{tr},\;r=\frac{n}{4}$& med\\ \hline
+					$E =$   &  0.0021  &  	0.0001     &        0.0000              &  0.0000&     -0.0012\\ \hline
+					$D =$   &     0.00000 &   	0.00103                &   0.00143       &  0.00202 &   0.00294 \\
+					\hline
+				\end{tabular}
+			\end{center}
+		\end{table}
+		
+		\begin{table}[h]
+			\caption{ Распределение Пуассона.}
+			\begin{center}
+				\begin{tabular}{|c|c|c|c|c|c|}
+					\hline
+					$n = 10$   & average & med & $Z_R$ & $Z_Q$ & $Z_{tr},\;r=\frac{n}{4}$\\ \hline
+					$E =$     & 10.04     &   9.89        & 10.31     &   9.91      &   9.89 \\ \hline
+					$D =$     &  	1.005   &      1.493  &       1.793      &   1.111      &   1.144\\ \hline
+					
+					$n = 50$   & average & med & $Z_R$ & $Z_Q$ & $Z_{tr},\;r=\frac{n}{4}$\\ \hline
+					$E =$      & 	9.969     &    9.835  &       10.748     &   9.928     &    9.874    \\ \hline
+					$D =$       &	0.1963     &   0.3566   &      1.1819      &   0.2816      &   0.2671  \\ \hline
+					
+					$n = 1000$  & $Z_R$ & average & med  & $Z_Q$ & $Z_{tr},\;r=\frac{n}{4}$\\ \hline
+					$E =$    &    11.6572  & 10.0000  &      9.9971         &    9.9951  &       9.8530\\ \hline
+					$D =$    &       0.64385  & 	0.00891   &      0.00299        &   0.00252      &   0.01182  \\
+					\hline
+				\end{tabular}
+			\end{center}
+		\end{table}
+		\newpage
+			
+	\section{Обсуждение}
+		\par При вычислении средних значений пришлось отбрасывать некоторое число знаков после запятой, так как получаемая дисперсия не могла гарантировать получаемое точное значение.\\
+		Единственным исключением стало стандартное распределение Коши, так как оно имеет бесконечную дисперсию, а значит не может гарантировать никакой точности.
+		
+		
+		
+	\section{Литература}
+	
+	\href{https://physics.susu.ru/vorontsov/language/numpy.html}{Модуль numpy}
+	
+	\section{Приложения}
+	
+	\href{https://github.com/dmitry-maltsov/PolyMatStat/blob/master/2/lab2.py}{Код лаборатрной}
+	
+	
+\end{document}
